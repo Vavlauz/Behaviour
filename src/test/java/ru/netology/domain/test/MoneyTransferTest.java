@@ -16,7 +16,7 @@ public class MoneyTransferTest {
     @BeforeEach
     public void setUp() {
         Configuration.holdBrowserOpen = true;
-        open("http://localhost:9999/");
+        open("http://localhost:9999");
     }
 
     @Test
