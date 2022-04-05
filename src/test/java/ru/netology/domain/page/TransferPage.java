@@ -27,7 +27,7 @@ public class TransferPage {
     }
 
     public DashboardPage makeTransfer2(String amountToTransfer, DataHelper.CardInfo cardInfo) {
-        amountInput.sendKeys(chord(SHIFT,HOME,BACK_SPACE));
+        amountInput.sendKeys(chord(SHIFT, HOME, BACK_SPACE));
         amountInput.setValue(amountToTransfer).sendKeys(TAB);
         fromInput.sendKeys(Keys.BACK_SPACE);
         fromInput.setValue(cardInfo.getCardNumber());
