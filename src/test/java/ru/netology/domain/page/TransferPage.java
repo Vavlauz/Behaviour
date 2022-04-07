@@ -14,6 +14,8 @@ public class TransferPage {
     private SelenideElement amountInput = $("[data-test-id='amount'] input");
     private SelenideElement fromInput = $("[data-test-id='from'] input");
     private SelenideElement transferHead = $(byText("Пополнение карты"));
+    private SelenideElement errorMessage = $(byText("Недостаточно средств"));
+    private SelenideElement errorEnterAssumeMessage = $(byText("Введите сумму"));
 
     public TransferPage() {
         transferHead.shouldBe(visible);
@@ -26,12 +28,20 @@ public class TransferPage {
         return new DashboardPage();
     }
 
-    public DashboardPage makeTransfer2(String amountToTransfer, DataHelper.CardInfo cardInfo) {
+    public DashboardPage makeTransferOriginal(String amountToTransfer, DataHelper.CardInfo cardInfo) {
         amountInput.sendKeys(chord(SHIFT, HOME, BACK_SPACE));
         amountInput.setValue(amountToTransfer).sendKeys(TAB);
         fromInput.sendKeys(Keys.BACK_SPACE);
         fromInput.setValue(cardInfo.getCardNumber());
         transferButton.click();
         return new DashboardPage();
+    }
+
+    public void shouldShowErrorTransfer() {
+        errorMessage.shouldBe(visible);
+    }
+
+    public void shouldShowErrorEnterAssume() {
+        errorEnterAssumeMessage.shouldBe(visible);
     }
 }
